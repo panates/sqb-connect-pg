@@ -30,10 +30,10 @@
     "eslint-config-google": "^0.9.1",
     "istanbul": "^0.4.5",
     "mocha": "^4.1.0",
-    "sqb": "^1.0.1-alpha.2"
+    "sqb": "^1.0.1-rc.1"
   },
   "peerDependencies": {
-    "sqb": "^1.0.1-alpha.2"
+    "sqb": "^1.0.1-rc.1"
   },
   "engines": {
     "node": ">= 4.0"
