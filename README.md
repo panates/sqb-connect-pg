@@ -2,6 +2,8 @@
 
 [![NPM Version][npm-image]][npm-url]
 [![NPM Downloads][downloads-image]][downloads-url]
+[![Build Status][travis-image]][travis-url]
+[![Test Coverage][coveralls-image]][coveralls-url]
 [![Dependencies][dependencies-image]][dependencies-url]
 [![DevDependencies][devdependencies-image]][devdependencies-url]
 [![PeerDependencies][peerdependencies-image]][peerdependencies-url]
@@ -18,6 +20,10 @@ SQB-connect is connection plugin for PostgreSQL database
 
 [npm-image]: https://img.shields.io/npm/v/sqb-connect-pg.svg
 [npm-url]: https://npmjs.org/package/sqb-connect-pg
+[travis-image]: https://img.shields.io/travis/panates/sqb/master.svg
+[travis-url]: https://travis-ci.org/panates/sqb
+[coveralls-image]: https://img.shields.io/coveralls/panates/sqb/master.svg
+[coveralls-url]: https://coveralls.io/r/panates/sqb
 [downloads-image]: https://img.shields.io/npm/dm/sqb-connect-pg.svg
 [downloads-url]: https://npmjs.org/package/sqb-connect-pg
 [dependencies-image]: https://david-dm.org/panates/sqb-connect-pg.svg

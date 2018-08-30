@@ -12,7 +12,6 @@ services:
   - postgresql
 before_install:
   - "npm install sqb --save"
-  - "npm install sqb-connect --save"
   - "test ! -d node_modules || npm prune"
   - "test ! -d node_modules || npm rebuild"
 before_script:
