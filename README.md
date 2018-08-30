@@ -8,9 +8,10 @@
 
 SQB-connect is connection plugin for PostgreSQL database
 
-## Node Compatibility
+## Compatibility
 
-  - node `>= 4.x`;
+  - node `>= 6.x`;
+  - sqb `3.x`;
   
 ### License
 [MIT](LICENSE)
