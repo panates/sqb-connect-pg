@@ -56,7 +56,7 @@ describe('sqb-connect-pg', function() {
 
     if (!process.env.SKIP_CREATE_TABLES) {
       it('create test tables', function() {
-        this.slow(200);
+        this.slow(4000);
         return pool.acquire(connection => {
           return createTestTables(connection._client.intlcon);
         });
@@ -90,6 +90,7 @@ describe('sqb-connect-pg', function() {
     });
 
     it('should fetch test table (cursor)', function() {
+      this.slow(200);
       return pool.select()
           .from('airports')
           .orderBy(['id'])
@@ -106,6 +107,7 @@ describe('sqb-connect-pg', function() {
     });
 
     it('should fetch test table (cursor, objectRows)', function() {
+      this.slow(200);
       let k = 0;
       return pool.select()
           .from('airports')
