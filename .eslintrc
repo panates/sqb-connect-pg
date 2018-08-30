@@ -5,7 +5,7 @@
     "google"
   ],
   "env": {
-    "es6": false,
+    "es6": true,
     "node": true
   },
   "rules": {
@@ -18,7 +18,7 @@
         "args": "none"
       }
     ],
-    "no-var": 0,
+    "no-var": 1,
     "prefer-const": 1,
     "no-trailing-spaces": 0,
     "spaced-comment": 0,

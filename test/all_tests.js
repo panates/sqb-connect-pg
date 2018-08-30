@@ -60,7 +60,7 @@ describe('sqb-connect-pg', function() {
         return pool.acquire(connection => {
           return createTestTables(connection._client.intlcon);
         });
-      });
+      }).timeout(5000);
     }
 
     it('should fetch "airports" table (objectRows=false)', function() {
