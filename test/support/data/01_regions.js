@@ -7,15 +7,7 @@ CREATE TABLE sqb_test.regions
     name character varying(16) COLLATE pg_catalog."default",
     CONSTRAINT regions_pkey PRIMARY KEY (id)
 )
-WITH (
-    OIDS = FALSE
-)
-TABLESPACE pg_default;
-
-ALTER TABLE sqb_test.regions
-    OWNER to postgres;
   `),
-  insertSql: 'insert into sqb_test.regions (id,name) values ($1,$2)',
   rows: [
     {
       ID: 'FR',

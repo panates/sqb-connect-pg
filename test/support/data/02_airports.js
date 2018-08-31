@@ -22,17 +22,7 @@ CREATE TABLE sqb_test.airports
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )
-WITH (
-    OIDS = FALSE
-)
-TABLESPACE pg_default;
-
-ALTER TABLE sqb_test.airports
-    OWNER to postgres;
   `),
-  insertSql: `insert into sqb_test.airports 
-      (id,shortname,name,region,icao,flags,catalog,length,elevation,runway,frequency,latitude,longitude)
-   values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)`,
   rows: [
     {
       ID: 'LFOI',
