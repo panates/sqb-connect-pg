@@ -124,6 +124,18 @@ describe('sqb-connect-pg', function() {
           });
     });
 
+    it('should use array values in `where` clouse', function() {
+      return pool.select()
+          .from('airports')
+          .where({'id': ['AIGRE', 'LFBA']})
+          .execute().then(result => {
+            const rows = result.rows;
+            assert(rows);
+            assert.equal(rows.length, 2);
+            assert.equal(rows[0].id, 'LFBA');
+          });
+    });
+
     it('should invalid sql return error', function(done) {
       pool.execute('invalid sql').then(() => {
         done(new Error('Failed'));
