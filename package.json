@@ -22,18 +22,18 @@
     "pg": "^7.4.3",
     "pg-cursor": "^1.3.0",
     "putil-waterfall": "^2.0.2",
-    "sqb-serializer-pg": "^3.0.2"
+    "sqb-serializer-pg": "^3.0.3"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
-    "eslint": "^5.4.0",
+    "eslint": "^5.5.0",
     "eslint-config-google": "^0.10.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
-    "sqb": "^3.2.7"
+    "sqb": "^3.3.0"
   },
   "peerDependencies": {
-    "sqb": ">=3.2.7"
+    "sqb": ">=3.3.0"
   },
   "engines": {
     "node": ">= 6.0"
