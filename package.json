@@ -1,7 +1,7 @@
 {
   "name": "sqb-connect-pg",
   "description": "SQB Connection plugin for PostgreSQL",
-  "version": "3.0.6",
+  "version": "3.0.7",
   "author": "Panates Ltd.",
   "contributors": [
     "Eray Hanoglu <e.hanoglu@panates.com>"
@@ -26,14 +26,14 @@
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
-    "eslint": "^5.5.0",
+    "eslint": "^5.6.0",
     "eslint-config-google": "^0.10.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
-    "sqb": "^3.4.0"
+    "sqb": "^3.4.2"
   },
   "peerDependencies": {
-    "sqb": ">=3.4.0"
+    "sqb": ">=3.4.2"
   },
   "engines": {
     "node": ">= 6.0"

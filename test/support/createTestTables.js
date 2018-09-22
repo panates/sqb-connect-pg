@@ -49,7 +49,14 @@ function createTestTables(client, schemaName) {
 
             return waterfall([
               /* Create table */
-              (next) => client.query(table.createSql, next),
+              (next) => client.query(table.createSql, (err) => {
+                if (err) {
+                  err.message =
+                      'Can not create table "' + table.name + '". ' + err.message;
+                  return next(err);
+                }
+                next();
+              }),
 
               /* Insert rows */
               () => {
@@ -65,7 +72,7 @@ function createTestTables(client, schemaName) {
                 return waterfall.every(table.rows, (next, row) => {
                   const params = [];
                   for (const key of fieldKeys) {
-                    params.push(row[key] || null);
+                    params.push(row[key] == null ? null : row[key]);
                   }
                   client.query({
                     text: insertSql,
