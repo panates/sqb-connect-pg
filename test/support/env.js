@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 process.env.NODE_ENV = 'test';
 
-const f = path.join(__dirname, 'database.json');
+const f = path.join(__dirname, 'db_config.json');
 if (fs.existsSync(f)) {
   const config = require(f);
   process.env.DB_USER = process.env.DB_USER || config.user;

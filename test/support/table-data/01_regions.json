@@ -1,0 +1,25 @@
+{
+  "name": "sqb_test.regions",
+  "rows": [
+    {
+      "ID": "FR",
+      "Name": "FR Region"
+    },
+    {
+      "ID": "TR",
+      "Name": "TR Region"
+    },
+    {
+      "ID": "GB",
+      "Name": "GB Region"
+    },
+    {
+      "ID": "US",
+      "Name": "US Region"
+    },
+    {
+      "ID": "CN",
+      "Name": "CN Region"
+    }
+  ]
+}

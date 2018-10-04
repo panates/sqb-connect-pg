@@ -2,7 +2,7 @@
 require('./support/env');
 const assert = require('assert');
 const sqb = require('sqb');
-const createTestTables = require('./support/createTestTables');
+const createDatabase = require('./support/createDatabase');
 const waterfall = require('putil-waterfall');
 
 sqb.use(require('../'));
@@ -57,7 +57,10 @@ describe('sqb-connect-pg', function() {
       it('create test tables', function() {
         this.slow(4000);
         return pool.acquire(connection => {
-          return createTestTables(connection._client.intlcon, 'sqb_test');
+          return createDatabase(connection._client.intlcon, {
+            structureScript: 'db_structure.sql',
+            dataFiles: 'table-data/*.json'
+          });
         });
       }).timeout(5000);
     }

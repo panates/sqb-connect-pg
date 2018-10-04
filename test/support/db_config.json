@@ -1,0 +1,8 @@
+{
+  "dialect": "pg",
+  "user": "postgres",
+  "password": "pgdata-",
+  "host": "localhost",
+  "database": "test",
+  "skip_create_tables": 0
+}
