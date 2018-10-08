@@ -139,10 +139,34 @@ describe('sqb-connect-pg', function() {
           });
     });
 
-    it('should invalid sql return error', function(done) {
+    it('should return error if sql is invalid', function(done) {
       pool.execute('invalid sql').then(() => {
         done(new Error('Failed'));
       }).catch(() => done());
+    });
+
+    it('should insert record with returning', function() {
+      return pool.insert('airports', {
+        'ID': 'X001',
+        'ShortName': 'TEST',
+        'Name': 'Test1'
+      }).returning({ID: 'string'})
+          .execute().then(result => {
+            assert(result);
+            assert(result.rows);
+            assert.equal(result.rows[0].id, 'X001');
+          });
+    });
+
+    it('should update record with returning', function() {
+      return pool.update('airports', {Catalog: 3345})
+          .where({ID: 'LFOI'})
+          .returning({Catalog: 'number'})
+          .execute().then(result => {
+            assert(result);
+            assert(result.rows);
+            assert.equal(result.rows[0].catalog, 3345);
+          });
     });
 
     it('should call startTransaction more than one', function() {
