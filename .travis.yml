@@ -11,12 +11,11 @@ cache:
 services:
   - postgresql
 before_install:
-  - "npm install sqb --save"
   - "test ! -d node_modules || npm prune"
   - "test ! -d node_modules || npm rebuild"
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 script:
-  - "npm run-script test-travis"
+  - "npm run-script travis-cover"
 after_script:
-  - "npm install coveralls@2 && cat ./coverage/lcov.info | coveralls"
+- "npm install coveralls && cat ./coverage/lcov.info | coveralls"
