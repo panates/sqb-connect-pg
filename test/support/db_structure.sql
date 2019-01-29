@@ -23,6 +23,7 @@ CREATE TABLE sqb_test.airports
     frequency float,
     latitude character varying(10) COLLATE pg_catalog."default",
     longitude character varying(10) COLLATE pg_catalog."default",
+    temp integer,
     CONSTRAINT airports_pkey PRIMARY KEY (id),
     CONSTRAINT fk_airports_region FOREIGN KEY (region)
         REFERENCES sqb_test.regions (id) MATCH SIMPLE

@@ -73,8 +73,8 @@ describe('sqb-connect-pg', function() {
           .execute({objectRows: false}).then(result => {
             const rows = result.rows;
             assert(rows);
-            assert.equal(rows.length, 100);
-            assert.equal(rows[0][0], 'AIGRE');
+            assert.strictEqual(rows.length, 100);
+            assert.strictEqual(rows[0][0], 'AIGRE');
           });
     });
 
@@ -86,8 +86,8 @@ describe('sqb-connect-pg', function() {
           .execute().then(result => {
             const rows = result.rows;
             assert(rows);
-            assert.equal(rows.length, 100);
-            assert.equal(rows[0].id, 'AIGRE');
+            assert.strictEqual(rows.length, 100);
+            assert.strictEqual(rows[0].id, 'AIGRE');
           });
     });
 
@@ -101,8 +101,8 @@ describe('sqb-connect-pg', function() {
             const cursor = result.cursor;
             assert(cursor);
             return cursor.next().then((row) => {
-              assert.equal(cursor.row, row);
-              assert.equal(cursor.row[0], 'AIGRE');
+              assert.strictEqual(cursor.row, row);
+              assert.strictEqual(cursor.row[0], 'AIGRE');
               return cursor.close();
             });
           });
@@ -120,8 +120,8 @@ describe('sqb-connect-pg', function() {
             const cursor = result.cursor;
             assert(cursor);
             return cursor.next().then((row) => {
-              assert.equal(cursor.row, row);
-              assert.equal(cursor.row.id, 'AIGRE');
+              assert.strictEqual(cursor.row, row);
+              assert.strictEqual(cursor.row.id, 'AIGRE');
               return cursor.close();
             });
           });
@@ -134,8 +134,8 @@ describe('sqb-connect-pg', function() {
           .execute().then(result => {
             const rows = result.rows;
             assert(rows);
-            assert.equal(rows.length, 2);
-            assert.equal(rows[0].id, 'LFBA');
+            assert.strictEqual(rows.length, 2);
+            assert.strictEqual(rows[0].id, 'LFBA');
           });
     });
 
@@ -154,7 +154,7 @@ describe('sqb-connect-pg', function() {
           .execute().then(result => {
             assert(result);
             assert(result.rows);
-            assert.equal(result.rows[0].id, 'X001');
+            assert.strictEqual(result.rows[0].id, 'X001');
           });
     });
 
@@ -165,7 +165,15 @@ describe('sqb-connect-pg', function() {
           .execute().then(result => {
             assert(result);
             assert(result.rows);
-            assert.equal(result.rows[0].catalog, 3345);
+            assert.strictEqual(result.rows[0].catalog, 3345);
+          });
+    });
+
+    it('should return updated record count', function() {
+      return pool.update('airports', {temp: 1})
+          .execute().then(result => {
+            assert(result);
+            assert.strictEqual(result.rowsAffected, 1219);
           });
     });
 
@@ -209,7 +217,7 @@ describe('sqb-connect-pg', function() {
               .from('airports')
               .where({ID: 'LFOI'})
               .execute({objectRows: true}).then((result) => {
-                assert.notEqual(result.rows[0].Catalog, 1234);
+                assert.notStrictEqual(result.rows[0].Catalog, 1234);
               })
         ]);
       });
@@ -226,7 +234,7 @@ describe('sqb-connect-pg', function() {
               .from('airports')
               .where({ID: 'LFOI'})
               .execute({objectRows: true}).then((result) => {
-                assert.equal(result.rows[0].catalog, 1234);
+                assert.strictEqual(result.rows[0].catalog, 1234);
               })
         ]);
       });
@@ -246,7 +254,7 @@ describe('sqb-connect-pg', function() {
           .from('schemas')
           .where({schema_name: 'sqb_test'})
           .execute().then(result => {
-            assert.equal(result.rows.length, 1);
+            assert.strictEqual(result.rows.length, 1);
           });
     });
 
@@ -255,8 +263,8 @@ describe('sqb-connect-pg', function() {
           .from('tables')
           .where({schema_name: 'sqb_test'})
           .execute().then(result => {
-            assert.equal(result.rows.length, 2);
-            assert.equal(result.rows[0].table_name, 'airports');
+            assert.strictEqual(result.rows.length, 2);
+            assert.strictEqual(result.rows[0].table_name, 'airports');
           });
     });
 
@@ -265,37 +273,37 @@ describe('sqb-connect-pg', function() {
           .from('columns')
           .where({schema_name: 'sqb_test', table_name: 'airports'})
           .execute().then(result => {
-            assert.equal(result.rows.length, 13);
-            assert.equal(result.rows[0].column_name, 'id');
+            assert.strictEqual(result.rows.length, 14);
+            assert.strictEqual(result.rows[0].column_name, 'id');
           });
     });
 
     it('should select primary keys', function() {
-      assert.equal(pool.acquired, 0);
+      assert.strictEqual(pool.acquired, 0);
       return metaData.select()
           .from('primary_keys')
           .where({schema_name: 'sqb_test', table_name: 'airports'})
           .execute().then(result => {
-            assert.equal(result.rows.length, 1);
-            assert.equal(result.rows[0].column_names, 'id');
+            assert.strictEqual(result.rows.length, 1);
+            assert.strictEqual(result.rows[0].column_names, 'id');
           });
     });
 
     it('should select foreign keys', function() {
-      assert.equal(pool.acquired, 0);
+      assert.strictEqual(pool.acquired, 0);
       return metaData.select()
           .from('foreign_keys')
           .where({schema_name: 'sqb_test', table_name: 'airports'})
           .execute().then(result => {
-            assert.equal(result.rows.length, 1);
-            assert.equal(result.rows[0].column_name, 'region');
-            assert.equal(result.rows[0].foreign_table_name, 'regions');
-            assert.equal(result.rows[0].foreign_column_name, 'id');
+            assert.strictEqual(result.rows.length, 1);
+            assert.strictEqual(result.rows[0].column_name, 'region');
+            assert.strictEqual(result.rows[0].foreign_table_name, 'regions');
+            assert.strictEqual(result.rows[0].foreign_column_name, 'id');
           });
     });
 
     it('should get schema objects with metaData.getSchemas()', function() {
-      assert.equal(pool.acquired, 0);
+      assert.strictEqual(pool.acquired, 0);
       return metaData.getSchemas('sqb_test')
           .then(schemas => {
             assert.notEqual(schemas.length, 0);
@@ -304,24 +312,24 @@ describe('sqb-connect-pg', function() {
     });
 
     it('should not get table objects with metaData.getTables()', function(done) {
-      assert.equal(pool.acquired, 0);
+      assert.strictEqual(pool.acquired, 0);
       metaData.getTables('airports')
           .then(() => done('Failed'))
           .catch(() => done());
     });
 
     it('should get table objects with schema.getTables()', function() {
-      assert.equal(pool.acquired, 0);
+      assert.strictEqual(pool.acquired, 0);
       return schema.getTables()
           .then(tables => {
-            assert.equal(tables.length, 2);
+            assert.strictEqual(tables.length, 2);
             table = tables[0];
-            assert.equal(table.meta.table_name, 'airports');
+            assert.strictEqual(table.meta.table_name, 'airports');
           });
     });
 
     it('should get table columns', function() {
-      assert.equal(pool.acquired, 0);
+      assert.strictEqual(pool.acquired, 0);
       return table.getColumns().then(result => {
         assert(result);
         assert(result.id);
@@ -332,7 +340,7 @@ describe('sqb-connect-pg', function() {
     it('should get table primary key', function() {
       return table.getPrimaryKey().then(result => {
         assert(result);
-        assert.equal(result.column_names, 'id');
+        assert.strictEqual(result.column_names, 'id');
       });
     });
 
@@ -340,7 +348,7 @@ describe('sqb-connect-pg', function() {
       return table.getForeignKeys().then(result => {
         assert(result);
         assert(result.length);
-        assert.equal(result[0].column_name, 'region');
+        assert.strictEqual(result[0].column_name, 'region');
       });
     });
 
@@ -349,7 +357,7 @@ describe('sqb-connect-pg', function() {
   describe('Finalize', function() {
 
     it('should have no active connection after all tests', function() {
-      assert.equal(pool.acquired, 0);
+      assert.strictEqual(pool.acquired, 0);
     });
 
     it('should shutdown pool', function() {
