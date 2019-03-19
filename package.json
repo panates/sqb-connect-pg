@@ -1,7 +1,7 @@
 {
   "name": "sqb-connect-pg",
   "description": "SQB Connection plugin for PostgreSQL",
-  "version": "3.1.2",
+  "version": "3.1.3",
   "author": "Panates Ltd.",
   "contributors": [
     "Eray Hanoglu <e.hanoglu@panates.com>"
