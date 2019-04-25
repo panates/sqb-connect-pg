@@ -2,24 +2,36 @@
   "name": "sqb_test.regions",
   "rows": [
     {
-      "ID": "FR",
-      "Name": "FR Region"
+      "id": "FR",
+      "name": "FR Region",
+      "tags": [
+        "a1",
+        "b2"
+      ]
     },
     {
-      "ID": "TR",
-      "Name": "TR Region"
+      "id": "TR",
+      "name": "TR Region",
+      "tags": [
+        "c3",
+        "d4"
+      ]
     },
     {
-      "ID": "GB",
-      "Name": "GB Region"
+      "id": "GB",
+      "name": "GB Region",
+      "tags": [
+        "e5",
+        "f6"
+      ]
     },
     {
-      "ID": "US",
-      "Name": "US Region"
+      "id": "US",
+      "name": "US Region"
     },
     {
-      "ID": "CN",
-      "Name": "CN Region"
+      "id": "CN",
+      "name": "CN Region"
     }
   ]
 }
